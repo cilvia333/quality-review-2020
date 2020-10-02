@@ -20,7 +20,7 @@ const Wrapper = styled.header`
 `;
 
 const StyledLogo = styled(TitleLogo)`
-  ${tw`h-12 fill-current text-gray-900`}
+  ${tw`h-12 fill-current text-gray-900 cursor-pointer`}
 `;
 
 export default Header;

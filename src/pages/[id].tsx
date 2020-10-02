@@ -1,18 +1,27 @@
+import _ from 'lodash';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import Item from '~/data/di19551_Shiomi.json';
+import { ArticleData } from '~/data';
 
 const Id: React.FC = () => {
   const router = useRouter();
   const { id } = router.query;
+  const [item, setItem] = useState<Info>();
+
+  useEffect(() => {
+    const article = _.get(ArticleData, `${id}`);
+    if (article) {
+      setItem(article);
+    }
+  }, [id]);
 
   return (
     <Title>
-      {id}
-      {Item.description}
+      {item?.id ?? ''}
+      {item?.description ?? ''}
     </Title>
   );
 };

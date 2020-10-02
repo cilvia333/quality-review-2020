@@ -29,7 +29,7 @@ const Card: React.FC<Props> = (props) => {
     colors.push({ h, s: converedS, v: converedV });
   }
 
-  for (let i = 0; i < 42; i++) {
+  for (let i = 0; i < 168; i++) {
     tileColors.push(colors[Math.floor(Math.random() * Math.floor(6))]);
   }
 
@@ -44,9 +44,11 @@ const Card: React.FC<Props> = (props) => {
           </Name>
           <Description>{Item.description}</Description>
           <ReadMore>
-            <Link href={`/${id}`}>read more ...</Link>
+            <Link href={'/[id]'} as={`${props.id}`}>
+              read more ...
+            </Link>
           </ReadMore>
-          <Link href={`/${id}`}>
+          <Link href={'/[id]'} as={`${props.id}`}>
             <ThumbnailWrapper>
               <ThumbnailImg src={require('images/di19551/thumbnail.png')} />
             </ThumbnailWrapper>
@@ -54,8 +56,11 @@ const Card: React.FC<Props> = (props) => {
         </ContentWrapper>
       </PostWrapper>
       <ButtonWrapper>
-        <StyledHeartOutline onClick={() => isClicked(true)} />
-        <StyledHeart clicked />
+        <StyledHeartOutline
+          isActive={!clicked}
+          onClick={() => isClicked(true)}
+        />
+        <StyledHeart isActive={clicked} />
       </ButtonWrapper>
       <Footer>
         {tileColors.map((color, index) => (
@@ -73,7 +78,7 @@ const Wrapper = styled.div`
 `;
 
 const PostWrapper = styled.div`
-  ${tw`p-4 flex items-start`}
+  ${tw`p-8 flex items-start`}
 `;
 
 const IconImg = styled.img`
@@ -118,31 +123,41 @@ const ThumbnailWrapper = styled.div`
   }
 `;
 
-const ButtonWrapper = styled.div`
-  ${tw`absolute h-8 w-8 z-10`}
-  bottom: 3rem;
-  right: 1rem;
-`;
-
-const StyledHeartOutline = styled(HeartOutline)`
-  ${tw`absolute h-full w-full transition-all duration-500 ease-in-out cursor-pointer`}
+const StyledHeartOutline = styled(HeartOutline)<{ isActive: boolean }>`
+  ${tw`absolute h-full w-full transition-all duration-500 ease-in-out cursor-pointer opacity-0`}
 
   stroke-width: 2px;
   transform: scale(1);
 
-  &:hover {
-    transform: scale(1.2);
-  }
+  ${({ isActive }) =>
+    isActive &&
+    css`
+      ${tw`opacity-100`}
+    `}
 `;
 
-const StyledHeart = styled(Heart)`
-  ${tw`absolute h-8 w-8 transition-all duration-500 ease-in-out cursor-pointer`}
+const StyledHeart = styled(Heart)<{ isActive: boolean }>`
+  ${tw`absolute h-full w-full transition-all duration-300 ease-in-out cursor-pointer fill-current text-red-500 opacity-0`}
 
   stroke-width: 2px;
-  transform: scale(0);
+  transform: scale(0.1);
 
+  ${({ isActive }) =>
+    isActive &&
+    css`
+      ${tw`opacity-100`}
+      transform: scale(1);
+    `}
+`;
+
+const ButtonWrapper = styled.div`
+  ${tw`absolute h-8 w-8 z-10`}
+  bottom: 3rem;
+  right: 1rem;
   &:hover {
-    transform: scale(1.2);
+    ${StyledHeartOutline} {
+      transform: scale(1.2);
+    }
   }
 `;
 
@@ -154,8 +169,8 @@ const Footer = styled.div`
 
 const BGTile = styled.div<{ color: HSV }>`
   ${tw`relative bg-gray-500`}
-  height: 20px;
-  width: 20px;
+  height: 10px;
+  width: 10px;
 
   ${({ color }) => css`
     background-color: hsl(${color.h}, ${color.s}%, ${color.v}%);
