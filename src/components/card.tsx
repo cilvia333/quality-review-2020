@@ -83,7 +83,7 @@ const Card: React.FC<Props> = (props) => {
       </ButtonWrapper>
       <Footer>
         {tileColors.map((color, index) => (
-          <BGTile color={color} key={`tile_${index}`} />
+          <BGTile h={color.h} s={color.s} v={color.v} key={`tile_${index}`} />
         ))}
       </Footer>
     </Wrapper>
@@ -186,13 +186,13 @@ const Footer = styled.div`
   bottom: -40px;
 `;
 
-const BGTile = styled.div<{ color: HSV }>`
+const BGTile = styled.div<{ h: number; s: number; v: number }>`
   ${tw`relative bg-gray-500`}
   height: 10px;
   width: 10px;
 
-  ${({ color }) => css`
-    background-color: hsl(${color.h}, ${color.s}%, ${color.v}%);
+  ${({ h, s, v }) => css`
+    background-color: hsl(${h}, ${s}%, ${v}%);
   `}
 `;
 
