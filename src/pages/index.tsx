@@ -48,7 +48,10 @@ const Index: React.FC = () => {
           property="og:url"
           content="https://quality-review-2020.vercel.app/"
         />
-        <meta property="og:image" content="" />
+        <meta
+          property="og:image"
+          content="https://quality-review-2020.vercel.app/ogp.png"
+        />
         <meta property="twitter:title" content="QualityReview2020" />
         <meta property="twitter:description" content="" />
         <meta property="twitter:image" content="" />

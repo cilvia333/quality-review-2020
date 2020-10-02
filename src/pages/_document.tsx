@@ -43,6 +43,9 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.xz.style/serve/inter.css"
           />
+          <meta property="og:type" content="website" />
+          <meta property="og:locale" content="ja_JP" />
+          <meta property="twitter:card" content="summary_large_image" />
         </Head>
         <body>
           <Main />

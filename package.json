@@ -4,7 +4,13 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "fmt": "run-s fmt:*",
+    "fmt:prettier": "yarn lint:prettier --write",
+    "fmt:eslint": "yarn lint:eslint --fix",
+    "lint": "run-s lint:*",
+    "lint:prettier": "prettier \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "lint:eslint": "eslint src --ext .ts,.tsx,.js,.jsx"
   },
   "dependencies": {
     "autoprefixer": "^10.0.0",

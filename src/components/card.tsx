@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
 
-import Heart from '..//assets/svgs/heart.svg';
-import HeartOutline from '..//assets/svgs/heart_outline.svg';
+import Heart from '../assets/svgs/heart.svg';
+import HeartOutline from '../assets/svgs/heart_outline.svg';
 
 import { ArticleData } from '~/data';
 import { HSV, Info } from '~/types';
