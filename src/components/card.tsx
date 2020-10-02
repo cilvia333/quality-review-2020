@@ -18,8 +18,7 @@ interface Props {
 
 const Card: React.FC<Props> = (props) => {
   const { id } = props;
-  const tileColors: HSV[] = [];
-  const colors: HSV[] = [];
+  const [tileColors, setTileColors] = useState<HSV[]>([]);
   const [clicked, isClicked] = useState(false);
   const [item, setItem] = useState<Info>();
 
@@ -41,15 +40,20 @@ const Card: React.FC<Props> = (props) => {
       item.color?.b ?? 0,
     ]);
 
+    const colors: HSV[] = [];
     for (let i = 0; i < 6; i++) {
       const converedS = (s / 5) * i;
       const converedV = 100 - (v / 5) * i;
       colors.push({ h, s: converedS, v: converedV });
     }
 
+    const colorArray: HSV[] = [];
+
     for (let i = 0; i < 168; i++) {
-      tileColors.push(colors[Math.floor(Math.random() * Math.floor(6))]);
+      colorArray.push(colors[Math.floor(Math.random() * Math.floor(6))]);
     }
+
+    setTileColors(colorArray);
   }, [item]);
 
   return (
@@ -83,7 +87,7 @@ const Card: React.FC<Props> = (props) => {
       </ButtonWrapper>
       <Footer>
         {tileColors.map((color, index) => (
-          <BGTile h={color.h} s={color.s} v={color.v} key={`tile_${index}`} />
+          <BGTile color={color} key={`tile_${index}`} />
         ))}
       </Footer>
     </Wrapper>
@@ -186,13 +190,13 @@ const Footer = styled.div`
   bottom: -40px;
 `;
 
-const BGTile = styled.div<{ h: number; s: number; v: number }>`
+const BGTile = styled.div<{ color: any }>`
   ${tw`relative bg-gray-500`}
   height: 10px;
   width: 10px;
 
-  ${({ h, s, v }) => css`
-    background-color: hsl(${h}, ${s}%, ${v}%);
+  ${({ color }) => css`
+    background-color: hsl(${color.h}, ${color.s}%, ${color.v}%);
   `}
 `;
 
