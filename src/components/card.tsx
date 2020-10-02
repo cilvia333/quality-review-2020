@@ -38,10 +38,13 @@ const Card: React.FC<Props> = (props) => {
       <PostWrapper>
         <IconImg src={require('images/di19551/icon.png')} />
         <ContentWrapper>
-          <Name>{Item.name}</Name>
+          <Name>
+            {Item.name}
+            <Id>@{Item.id}</Id>
+          </Name>
           <Description>{Item.description}</Description>
           <ReadMore>
-            <Link href={`/${id}`}>ReadMore...</Link>
+            <Link href={`/${id}`}>read more ...</Link>
           </ReadMore>
           <Link href={`/${id}`}>
             <ThumbnailWrapper>
@@ -82,7 +85,11 @@ const ContentWrapper = styled.div`
 `;
 
 const Name = styled.h2`
-  ${tw`m-0 text-xl rounded-full font-bold leading-none`}
+  ${tw`m-0 text-xl font-bold leading-none`}
+`;
+
+const Id = styled.span`
+  ${tw`ml-2 text-sm text-gray-600 font-bold leading-none`}
 `;
 
 const Description = styled.div`

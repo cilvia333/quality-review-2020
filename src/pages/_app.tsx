@@ -3,6 +3,7 @@ import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import tw from 'twin.macro';
 
+import Footer from '~/components/footer';
 import Header from '~/components/header';
 
 const GlobalStyle = createGlobalStyle`
@@ -21,6 +22,7 @@ const App: React.FC<Props> = ({ Component, pageProps }) => {
       <GlobalStyle />
       <Header />
       <Component {...pageProps} />
+      <Footer />
     </>
   );
 };
