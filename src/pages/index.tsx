@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
@@ -38,6 +39,20 @@ const Index: React.FC = () => {
 
   return (
     <Wrapper>
+      <Head>
+        <title>QualityReview2020</title>
+        <meta property="description" content="" />
+        <meta property="og:title" content="QualityReview2020" />
+        <meta property="og:description" content="" />
+        <meta
+          property="og:url"
+          content="https://quality-review-2020.vercel.app/"
+        />
+        <meta property="og:image" content="" />
+        <meta property="twitter:title" content="QualityReview2020" />
+        <meta property="twitter:description" content="" />
+        <meta property="twitter:image" content="" />
+      </Head>
       <CardWrapper>
         {items.map((item, index) => (
           <Card key={`card_${index}`} id={item} />

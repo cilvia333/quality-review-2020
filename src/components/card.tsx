@@ -1,14 +1,14 @@
+import _ from 'lodash';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
 
 import Heart from '..//assets/svgs/heart.svg';
 import HeartOutline from '..//assets/svgs/heart_outline.svg';
 
-import Item from '~/data/di19551_Shiomi.json';
-import { HSV } from '~/types/color';
-import { Info } from '~/types/info';
+import { ArticleData } from '~/data';
+import { HSV, Info } from '~/types';
 import { rgb2hsv } from '~/util/index';
 
 interface Props {
@@ -21,17 +21,36 @@ const Card: React.FC<Props> = (props) => {
   const tileColors: HSV[] = [];
   const colors: HSV[] = [];
   const [clicked, isClicked] = useState(false);
-  const [h, s, v] = rgb2hsv([Item.color.r, Item.color.g, Item.color.b]);
+  const [item, setItem] = useState<Info>();
 
-  for (let i = 0; i < 6; i++) {
-    const converedS = (s / 5) * i;
-    const converedV = 100 - (v / 5) * i;
-    colors.push({ h, s: converedS, v: converedV });
-  }
+  useEffect(() => {
+    const article = _.get(ArticleData, `${id}`);
+    if (article) {
+      setItem(article);
+    }
+  }, [id]);
 
-  for (let i = 0; i < 168; i++) {
-    tileColors.push(colors[Math.floor(Math.random() * Math.floor(6))]);
-  }
+  useEffect(() => {
+    if (!item) {
+      return;
+    }
+
+    const [h, s, v] = rgb2hsv([
+      item.color?.r ?? 0,
+      item.color?.g ?? 0,
+      item.color?.b ?? 0,
+    ]);
+
+    for (let i = 0; i < 6; i++) {
+      const converedS = (s / 5) * i;
+      const converedV = 100 - (v / 5) * i;
+      colors.push({ h, s: converedS, v: converedV });
+    }
+
+    for (let i = 0; i < 168; i++) {
+      tileColors.push(colors[Math.floor(Math.random() * Math.floor(6))]);
+    }
+  }, [item]);
 
   return (
     <Wrapper>
@@ -39,16 +58,16 @@ const Card: React.FC<Props> = (props) => {
         <IconImg src={require('images/di19551/icon.png')} />
         <ContentWrapper>
           <Name>
-            {Item.name}
-            <Id>@{Item.id}</Id>
+            {item?.name ?? ''}
+            <Id>@{item?.id ?? ''}</Id>
           </Name>
-          <Description>{Item.description}</Description>
+          <Description>{item?.description ?? ''}</Description>
           <ReadMore>
-            <Link href={'/[id]'} as={`${props.id}`}>
+            <Link href={'/[id]'} as={`${id}`}>
               read more ...
             </Link>
           </ReadMore>
-          <Link href={'/[id]'} as={`${props.id}`}>
+          <Link href={'/[id]'} as={`${id}`}>
             <ThumbnailWrapper>
               <ThumbnailImg src={require('images/di19551/thumbnail.png')} />
             </ThumbnailWrapper>

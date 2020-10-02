@@ -1,10 +1,12 @@
 import _ from 'lodash';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
 import { ArticleData } from '~/data';
+import { Info } from '~/types';
 
 const Id: React.FC = () => {
   const router = useRouter();
@@ -20,6 +22,36 @@ const Id: React.FC = () => {
 
   return (
     <Wrapper>
+      <Head>
+        <title>QualityReview2020 | {item?.name ?? ''}</title>
+        <meta property="description" content="" />
+        <meta
+          property="og:title"
+          content={`QualityReview2020 | ${item?.name ?? ''}`}
+        />
+        <meta property="og:description" content="" />
+        <meta
+          property="og:url"
+          content={`https://quality-review-2020.vercel.app/${id}`}
+        />
+        <meta
+          property="og:image"
+          content={`https://quality-review-2020.vercel.app/assets/${
+            item?.name ?? ''
+          }`}
+        />
+        <meta
+          property="twitter:title"
+          content={`QualityReview2020 | ${item?.name ?? ''}`}
+        />
+        <meta property="twitter:description" content="" />
+        <meta
+          property="twitter:image"
+          content={`https://quality-review-2020.vercel.app/assets/${
+            item?.name ?? ''
+          }`}
+        />
+      </Head>
       <ThumbnailWrapper>
         <ThumbnailImg src={require('images/di19551/thumbnail.png')} />
         <Profile>
