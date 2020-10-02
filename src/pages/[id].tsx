@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import Error from 'next/error';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
@@ -12,13 +13,19 @@ const Id: React.FC = () => {
   const router = useRouter();
   const { id } = router.query;
   const [item, setItem] = useState<Info>();
+  const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
     const article = _.get(ArticleData, `${id}`);
     if (article) {
       setItem(article);
     }
+    setIsChecked(true);
   }, [id]);
+
+  if (isChecked && !item) {
+    return <Error statusCode={404} />;
+  }
 
   return (
     <Wrapper>
@@ -53,9 +60,9 @@ const Id: React.FC = () => {
         />
       </Head>
       <ThumbnailWrapper>
-        <ThumbnailImg src={require('images/di19551/thumbnail.png')} />
+        <ThumbnailImg src={id ? require(`images/${id}/thumbnail.png`) : ''} />
         <Profile>
-          <IconImg src={require('images/di19551/icon.png')} />
+          <IconImg src={id ? require(`images/${id}/icon.png`) : ''} />
           <Name>
             {item?.name ?? ''}
             <StudentId>@{item?.id ?? ''}</StudentId>
@@ -64,7 +71,7 @@ const Id: React.FC = () => {
       </ThumbnailWrapper>
       <ContentWrapper>
         <Description>{item?.description ?? ''}</Description>
-        <Image src={require('images/di19551/icon.png')} />
+        <Image src={id ? require(`images/${id}/icon.png`) : ''} />
       </ContentWrapper>
     </Wrapper>
   );
