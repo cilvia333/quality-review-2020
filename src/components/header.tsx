@@ -16,11 +16,11 @@ const Header: React.FC = () => {
 };
 
 const Wrapper = styled.header`
-  ${tw`m-4`}
+  ${tw`p-4`}
 `;
 
 const StyledLogo = styled(TitleLogo)`
-  ${tw`h-12`}
+  ${tw`h-12 fill-current text-gray-900`}
 `;
 
 export default Header;

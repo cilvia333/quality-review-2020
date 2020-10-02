@@ -31,7 +31,13 @@
         }
       }
     ],
-    "import/extensions": [1, { "js": "never", "json": "always" }]
+    "import/extensions": [1, { "js": "never", "json": "always" }],
+    "no-unused-vars": [
+      2,
+      {
+        "argsIgnorePattern": "^_$"
+      }
+    ]
   },
   "overrides": [
     {

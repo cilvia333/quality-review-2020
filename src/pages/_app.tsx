@@ -6,6 +6,9 @@ import tw from 'twin.macro';
 import Header from '~/components/header';
 
 const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+  }
   h1 {
     ${tw`font-sans text-4xl`}
   }
