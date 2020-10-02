@@ -16,7 +16,10 @@ const Header: React.FC = () => {
 };
 
 const Wrapper = styled.header`
-  ${tw`px-12 py-8`}
+  ${tw`absolute px-12 py-8 z-10`}
+  top: 0;
+  right: 0;
+  left: 0;
 `;
 
 const StyledLogo = styled(TitleLogo)`

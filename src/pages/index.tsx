@@ -47,7 +47,7 @@ const Index: React.FC = () => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.main`
   ${tw`p-8`}
 `;
 

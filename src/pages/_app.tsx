@@ -9,9 +9,14 @@ import Header from '~/components/header';
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
+    position: relative;
   }
   h1 {
     ${tw`font-sans text-4xl`}
+  }
+
+  main {
+    padding-top: 7.5rem;
   }
 `;
 
