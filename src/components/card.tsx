@@ -19,7 +19,7 @@ interface Props {
 
 const Card: React.FC<Props> = (props) => {
   const { id } = props;
-  const [defColor, setDefColor] = useState<HSV[]>([]);
+  const [defColor, setDefColor] = useState<HSV>({ h: 0, s: 0, v: 0 });
   const [tileColors, setTileColors] = useState<HSV[]>([]);
   const [clicked, isClicked] = useState(false);
   const [item, setItem] = useState<Info>();
