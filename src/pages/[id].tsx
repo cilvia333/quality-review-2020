@@ -72,7 +72,12 @@ const Id: React.FC = () => {
       </ThumbnailWrapper>
       <ContentWrapper>
         <Description>{item?.description ?? ''}</Description>
-        <Image src={id ? require(`images/${id}/icon.png`) : ''} />
+        {item?.images?.map((img, index) => (
+          <Image
+            key={`img_${index}`}
+            src={id ? require(`images/${id}/${img}`) : ''}
+          />
+        ))}
       </ContentWrapper>
     </Wrapper>
   );
@@ -170,14 +175,16 @@ const Description = styled.div`
 
 const Image = styled.img`
   ${tw`w-full object-cover my-6 box-border`}
-  height: 240px;
+  height: 480px;
 
   ${media.md`
     ${tw`px-8`}
+    height: 360px;
   `}
 
   ${media.sm`
     ${tw`px-4`}
+    height: 240px;
   `}
 `;
 
