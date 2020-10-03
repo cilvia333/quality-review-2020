@@ -1,27 +1,27 @@
 import { css } from 'styled-components';
 
 export const media = {
-  xxl: (...args: any[]) => css`
+  xxl: (...args) => css`
     @media (min-width: 1281px) {
       ${css(...args)};
     }
   `,
-  xl: (...args: any[]) => css`
+  xl: (...args) => css`
     @media (max-width: 1280px) {
       ${css(...args)};
     }
   `,
-  lg: (...args: any[]) => css`
+  lg: (...args) => css`
     @media (max-width: 1024px) {
       ${css(...args)};
     }
   `,
-  md: (...args: any[]) => css`
+  md: (...args) => css`
     @media (max-width: 768px) {
       ${css(...args)};
     }
   `,
-  sm: (...args: any[]) => css`
+  sm: (...args) => css`
     @media (max-width: 640px) {
       ${css(...args)};
     }
