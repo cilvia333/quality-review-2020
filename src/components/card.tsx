@@ -8,6 +8,7 @@ import Heart from '../assets/svgs/heart.svg';
 import HeartOutline from '../assets/svgs/heart_outline.svg';
 
 import { ArticleData } from '~/data';
+import { media } from '~/styles';
 import { HSV, Info } from '~/types';
 import { rgb2hsv } from '~/util/index';
 
@@ -104,15 +105,35 @@ const Wrapper = styled.div`
 `;
 
 const PostWrapper = styled.div`
-  ${tw`p-8 flex items-start`}
+  ${tw`p-8 flex flex-row items-start`}
+
+  ${media.md`
+    ${tw`flex-col`}
+  `}
+
+  ${media.sm`
+    ${tw`p-4`}
+  `}
 `;
 
 const IconImg = styled.img`
   ${tw`h-12 w-12 object-cover rounded-full`}
+
+  ${media.md`
+    ${tw`mb-8 h-16 w-16`}
+  `}
+
+  ${media.sm`
+    ${tw`mb-8`}
+  `}
 `;
 
 const ContentWrapper = styled.div`
   ${tw`pb-4 pl-4`}
+
+  ${media.md`
+    ${tw`pl-0`}
+  `}
 `;
 
 const Name = styled.h2`
@@ -125,6 +146,10 @@ const Id = styled.span`
 
 const Description = styled.div`
   ${tw`py-4 text-base`}
+
+  ${media.sm`
+    ${tw`text-sm`}
+  `}
 `;
 
 const ReadMore = styled.div`

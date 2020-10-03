@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 import { ArticleData } from '~/data';
+import { media } from '~/styles';
 import { Info } from '~/types';
 
 const Id: React.FC = () => {
@@ -98,23 +99,56 @@ const ThumbnailImg = styled.img`
 `;
 
 const Profile = styled.div`
-  ${tw`absolute p-12 flex items-center z-20 mx-auto`}
+  ${tw`absolute p-12 flex items-center mx-auto`}
   max-width: 768px;
   bottom: 0;
   right: 0;
   left: 0;
+  z-index: 2;
+
+  ${media.md`
+    ${tw`p-8`}
+  `}
+
+  ${media.sm`
+    ${tw`p-6`}
+  `}
 `;
 
 const IconImg = styled.img`
   ${tw`h-20 w-20 object-cover rounded-full`}
+
+  ${media.sm`
+    ${tw`h-12 w-12`}
+  `}
+
+  ${media.sm`
+    ${tw`h-10 w-10`}
+  `}
 `;
 
 const Name = styled.h2`
   ${tw`m-0 ml-8 text-4xl text-white font-bold leading-none`}
+
+  ${media.md`
+    ${tw`text-2xl`}
+  `}
+
+  ${media.sm`
+    ${tw`ml-4 text-xl`}
+  `}
 `;
 
 const StudentId = styled.span`
   ${tw`ml-2 text-base text-white leading-none`}
+
+  ${media.md`
+    ${tw`text-sm`}
+  `}
+
+  ${media.sm`
+    ${tw`text-xs`}
+  `}
 `;
 
 const ContentWrapper = styled.div`
@@ -124,11 +158,27 @@ const ContentWrapper = styled.div`
 
 const Description = styled.div`
   ${tw`text-base `}
+
+  ${media.md`
+    ${tw`px-8 text-base`}
+  `}
+
+  ${media.sm`
+    ${tw`px-4 text-sm`}
+  `}
 `;
 
 const Image = styled.img`
-  ${tw`w-full object-cover my-6`}
+  ${tw`w-full object-cover my-6 box-border`}
   height: 240px;
+
+  ${media.md`
+    ${tw`px-8`}
+  `}
+
+  ${media.sm`
+    ${tw`px-4`}
+  `}
 `;
 
 export default Id;

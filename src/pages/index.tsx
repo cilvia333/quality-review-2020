@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 import Card from '~/components/card';
+import { media } from '~/styles';
 
 const Index: React.FC = () => {
   const items: string[] = [
@@ -79,6 +80,14 @@ const MV = styled.img`
 const CardWrapper = styled.ul`
   ${tw`p-16 pt-0 m-0 flex flex-wrap `}
   justify-content: space-around;
+
+  ${media.md`
+    ${tw`p-8`}
+  `}
+
+  ${media.md`
+    ${tw`p-4`}
+  `}
 `;
 
 const CardTitle = styled.h2`

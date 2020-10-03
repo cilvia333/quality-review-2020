@@ -10,9 +10,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     position: relative;
+    box-sizing: border-box;
   }
   h1 {
-    ${tw`font-sans text-4xl`}
+    ${tw`font-header text-4xl`}
   }
 `;
 
