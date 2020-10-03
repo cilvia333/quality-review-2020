@@ -82,7 +82,7 @@ const CardWrapper = styled.ul`
 `;
 
 const CardTitle = styled.h2`
-  ${tw`mt-12 font-bold text-4xl leading-none text-center`}
+  ${tw`mt-12 font-bold text-4xl leading-none text-center font-header text-primary`}
 `;
 
 export default Index;

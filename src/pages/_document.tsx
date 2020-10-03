@@ -46,6 +46,10 @@ export default class MyDocument extends Document {
           <meta property="og:type" content="website" />
           <meta property="og:locale" content="ja_JP" />
           <meta property="twitter:card" content="summary_large_image" />
+          <link
+            rel="stylesheet"
+            href="https://use.typekit.net/auy6xvo.css"
+          ></link>
         </Head>
         <body>
           <Main />

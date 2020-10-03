@@ -41,11 +41,11 @@ const Wrapper = styled.header`
 `;
 
 const StyledLogo = styled(TitleLogo)`
-  ${tw`h-12 fill-current text-gray-900 cursor-pointer`}
+  ${tw`h-12 fill-current text-primary cursor-pointer`}
 `;
 
 const StyledBackButton = styled(BackButton)<{ isActive: boolean }>`
-  ${tw`h-12 w-12 text-gray-900 fill-current cursor-pointer hidden`}
+  ${tw`h-12 w-12 text-primary fill-current cursor-pointer hidden`}
 
   ${({ isActive }) =>
     isActive &&

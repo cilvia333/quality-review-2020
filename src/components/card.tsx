@@ -62,7 +62,7 @@ const Card: React.FC<Props> = (props) => {
   return (
     <Wrapper>
       <PostWrapper>
-        <IconImg src={require('images/di19551/icon.png')} />
+        <IconImg src={require(`images/${id}/icon.png`)} />
         <ContentWrapper>
           <Name>
             {item?.name ?? ''}
@@ -76,7 +76,7 @@ const Card: React.FC<Props> = (props) => {
           </ReadMore>
           <Link href={'/[id]'} as={`${id}`}>
             <ThumbnailWrapper>
-              <ThumbnailImg src={require('images/di19551/thumbnail.png')} />
+              <ThumbnailImg src={require(`images/${id}/thumbnail.png`)} />
             </ThumbnailWrapper>
           </Link>
         </ContentWrapper>
@@ -132,15 +132,15 @@ const ReadMore = styled.div`
 `;
 
 const ThumbnailImg = styled.img`
-  ${tw`relative w-full object-cover transition-all duration-500 ease-in-out cursor-pointer`}
+  ${tw`relative h-full w-full object-cover transition-all duration-500 ease-in-out cursor-pointer`}
 
-  height: 200px;
   transform: scale(1);
 `;
 
 const ThumbnailWrapper = styled.div`
   ${tw`my-4 text-xl overflow-hidden`}
   border-radius: 16px;
+  height: 200px;
 
   &:hover {
     ${ThumbnailImg} {
