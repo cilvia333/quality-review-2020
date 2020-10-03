@@ -3,7 +3,7 @@ export type Info = {
   name?: string;
   title?: string;
   description?: string;
-  image?: string[];
+  images?: string[];
   color?: {
     r?: number;
     g?: number;
