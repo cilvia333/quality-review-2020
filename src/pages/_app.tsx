@@ -14,10 +14,6 @@ const GlobalStyle = createGlobalStyle`
   h1 {
     ${tw`font-sans text-4xl`}
   }
-
-  main {
-    padding-top: 7.5rem;
-  }
 `;
 
 export type Props = AppProps;

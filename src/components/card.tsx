@@ -18,6 +18,7 @@ interface Props {
 
 const Card: React.FC<Props> = (props) => {
   const { id } = props;
+  const [defColor, setDefColor] = useState<HSV[]>([]);
   const [tileColors, setTileColors] = useState<HSV[]>([]);
   const [clicked, isClicked] = useState(false);
   const [item, setItem] = useState<Info>();
@@ -39,6 +40,8 @@ const Card: React.FC<Props> = (props) => {
       item.color?.g ?? 0,
       item.color?.b ?? 0,
     ]);
+
+    setDefColor({ h, s, v });
 
     const colors: HSV[] = [];
     for (let i = 0; i < 6; i++) {
@@ -83,7 +86,7 @@ const Card: React.FC<Props> = (props) => {
           isActive={!clicked}
           onClick={() => isClicked(true)}
         />
-        <StyledHeart isActive={clicked} />
+        <StyledHeart isActive={clicked} color={defColor} />
       </ButtonWrapper>
       <Footer>
         {tileColors.map((color, index) => (
@@ -159,8 +162,8 @@ const StyledHeartOutline = styled(HeartOutline)<{ isActive: boolean }>`
     `}
 `;
 
-const StyledHeart = styled(Heart)<{ isActive: boolean }>`
-  ${tw`absolute h-full w-full transition-all duration-300 ease-in-out cursor-pointer fill-current text-red-500 opacity-0`}
+const StyledHeart = styled(Heart)<{ isActive: boolean; color: any }>`
+  ${tw`absolute h-full w-full transition-all duration-300 ease-in-out cursor-pointer fill-current opacity-0`}
 
   stroke-width: 2px;
   transform: scale(0.1);
@@ -171,6 +174,10 @@ const StyledHeart = styled(Heart)<{ isActive: boolean }>`
       ${tw`opacity-100`}
       transform: scale(1);
     `}
+
+  ${({ color }) => css`
+    color: hsl(${color.h}, ${color.s}%, ${color.v}%);
+  `}
 `;
 
 const ButtonWrapper = styled.div`

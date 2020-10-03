@@ -83,12 +83,13 @@ const Wrapper = styled.main`
 
 const ThumbnailWrapper = styled.div`
   ${tw`relative w-full`}
-  height: calc(100vh - 7.5rem);
+  height: 100vh;
 
   &::before {
-    ${tw`absolute h-full w-full inset-0 bg-gray-800 z-10`}
+    ${tw`absolute h-full w-full inset-0 bg-gray-800`}
     content: "";
     opacity: 0.4;
+    z-index: 1;
   }
 `;
 
@@ -113,7 +114,7 @@ const Name = styled.h2`
 `;
 
 const StudentId = styled.span`
-  ${tw`ml-2 text-xl text-white font-bold leading-none`}
+  ${tw`ml-2 text-base text-white leading-none`}
 `;
 
 const ContentWrapper = styled.div`
